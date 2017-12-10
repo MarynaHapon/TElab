@@ -1,3 +1,22 @@
-<p>
-  abonents works!
-</p>
+<h2>Our Abonents</h2>
+
+<ul>
+  <li *ngFor="let abonent of abonents" (click)="onSelect(abonent)">
+    {{ abonent.firstName }} {{ abonent.lastName }}
+  </li>
+</ul>
+
+<div *ngIf="selectedAbonent">
+  <h2>{{ selectedAbonent.name | uppercase }} Details</h2>
+
+  <div>
+    <span>id: </span>{{selectedAbonent.id}}
+  </div>
+
+  <div>
+    <label>Name:
+      <input [(ngModel)]="selectedAbonent.firstName" placeholder="name">
+    </label>
+  </div>
+
+</div>
