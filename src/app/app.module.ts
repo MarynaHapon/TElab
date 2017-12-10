@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AbonentsComponent } from './abonents/abonents.component';
 import { AbonentDetailComponent } from './abonent-detail/abonent-detail.component';
+import { AbonentService } from './abonent.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { AbonentDetailComponent } from './abonent-detail/abonent-detail.componen
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ AbonentService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Abonent } from '../abonent';
-import { ABONENTS } from '../mock-abonents';
+import { AbonentService } from '../abonent.service';
 
 @Component({
   selector: 'app-abonents',
@@ -9,23 +9,18 @@ import { ABONENTS } from '../mock-abonents';
 })
 
 export class AbonentsComponent implements OnInit {
-  abonent: Abonent = {
-    id: 1,
-    firstName: 'Maryna',
-    lastName: 'Hapon',
-    telNumber: 380681154644,
-    cashBalance: 34000,
-    active: true
-  };
-  abonents = ABONENTS;
+  abonents: Abonent[];
   selectedAbonent: Abonent;
 
-  constructor() { }
+  constructor(private abonentService: AbonentService) { }
 
   ngOnInit() {
+    this.getAbonents();
   }
   onSelect(abonent: Abonent): void {
     this.selectedAbonent = abonent;
   }
-
+  getAbonents(): void {
+    this.abonents = this.abonentService.getAbonents();
+  }
 }
