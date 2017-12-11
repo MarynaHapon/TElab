@@ -9,12 +9,14 @@ import { AbonentService } from './abonent.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AbonentsComponent,
-    AbonentDetailComponent
+    AbonentDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
