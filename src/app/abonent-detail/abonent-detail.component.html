@@ -1,6 +1,11 @@
 <mat-card  *ngIf="abonent">
   <h2 class="mat-h2">{{ abonent.name }} Редактировать №{{abonent.id}}</h2>
 
+  <button mat-button (click)="goBack()">Назад</button>
+  <button mat-button color="primary" (click)="goSave()">Сохранить</button>
+
+  <br>
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Имя" [(ngModel)]="abonent.firstName" value={{abonent.firstName}}>
   </mat-form-field>

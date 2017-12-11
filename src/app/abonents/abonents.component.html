@@ -22,17 +22,21 @@
         <td *ngIf="abonent.active"> Активный </td>
         <td *ngIf="!abonent.active"> Заблокированный </td>
         -->
-        <button mat-button
-                color="primary"
-                (click)="onSelect(abonent)"
+        <a routerLink="/detail/{{ abonent.id }}"
+           (click)="onSelect(abonent)"
+           mat-button
+           color="primary"
         >Редактировать
-        </button>
+        </a>
       </tr>
 
     </table>
   </mat-card>
 
+  <!--
   <div class="inner-right">
     <app-abonent-detail [abonent]="selectedAbonent"></app-abonent-detail>
   </div>
+  -->
+
 </div>

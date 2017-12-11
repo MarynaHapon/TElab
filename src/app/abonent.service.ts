@@ -13,4 +13,7 @@ export class AbonentService {
   getAbonents(): Observable<Abonent[]> {
     return of(ABONENTS);
   }
+  getAbonent(id: number): Observable<Abonent> {
+    return of (ABONENTS.find(abonent => abonent.id === id ));
+  }
 }

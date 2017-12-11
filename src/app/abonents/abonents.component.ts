@@ -10,16 +10,12 @@ import { AbonentService } from '../abonent.service';
 
 export class AbonentsComponent implements OnInit {
   abonents: Abonent[];
-  selectedAbonent: Abonent;
-
   constructor(private abonentService: AbonentService) { }
 
   ngOnInit() {
     this.getAbonents();
   }
-  onSelect(abonent: Abonent): void {
-    this.selectedAbonent = abonent;
-  }
+
   getAbonents(): void {
     this.abonentService.getAbonents()
       .subscribe(abonents => this.abonents = abonents);
