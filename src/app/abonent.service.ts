@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
 import { Abonent } from './abonent';
 import { ABONENTS } from './mock-abonents';
 
@@ -7,7 +10,7 @@ export class AbonentService {
 
   constructor() { }
 
-  getAbonents(): Abonent[] {
-    return ABONENTS;
+  getAbonents(): Observable<Abonent[]> {
+    return of(ABONENTS);
   }
 }

@@ -6,13 +6,13 @@ export const ABONENTS: Abonent[] = [
     lastName: 'Hapon',
     telNumber: 380681154644,
     cashBalance: 34000,
-    active: true
+    active: false
   },
   { id: 2,
     firstName: 'Nina',
     lastName: 'Hapon',
     telNumber: 380681154644,
-    cashBalance: 34000,
+    cashBalance: -34000,
     active: true
   },
   { id: 3,

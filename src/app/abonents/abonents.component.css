@@ -1,0 +1,18 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.inner-left {
+  width: 65%;
+}
+.inner-right {
+  width: 30%;
+}
+th, td {
+  padding: 10px 15px;
+}
+th {
+  text-align: left;
+}
+

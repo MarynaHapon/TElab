@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Телефонная станция';
+  title = 'title';
   task = 'Система Телефонная станция. ' +
     'Абонент оплачивает Счет за разговоры и Услуги, ' +
     'может попросить Администратора сменить номер и ' +

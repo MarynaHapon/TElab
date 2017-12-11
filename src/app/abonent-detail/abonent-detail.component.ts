@@ -12,5 +12,7 @@ export class AbonentDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  setAbonentStatus(state: boolean): void {
+    this.abonent.active = state;
+  }
 }

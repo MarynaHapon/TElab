@@ -1,9 +1,38 @@
-<h2>Our Abonents</h2>
+<div class="wrap">
+  <mat-card class="inner-left">
+    <h2 class="mat-h2">Абоненты</h2>
+    <table class="mat-cell">
+      <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Мобильный номер</th>
+        <th>Баланс</th>
+        <th>Статус</th>
+      </tr>
 
-<ul>
-  <li *ngFor="let abonent of abonents" (click)="onSelect(abonent)">
-    {{ abonent.firstName }} {{ abonent.lastName }}
-  </li>
-</ul>
+      <tr *ngFor="let abonent of abonents">
+        <td> {{ abonent.id }} </td>
+        <td> {{ abonent.firstName }} </td>
+        <td> {{ abonent.lastName }} </td>
+        <td> {{ abonent.telNumber }} </td>
+        <td> {{ abonent.cashBalance }} </td>
+        <td> {{ abonent.active }} </td>
+        <!--
+        <td *ngIf="abonent.active"> Активный </td>
+        <td *ngIf="!abonent.active"> Заблокированный </td>
+        -->
+        <button mat-button
+                color="primary"
+                (click)="onSelect(abonent)"
+        >Редактировать
+        </button>
+      </tr>
 
-<app-abonent-detail [abonent]="selectedAbonent"></app-abonent-detail>
+    </table>
+  </mat-card>
+
+  <div class="inner-right">
+    <app-abonent-detail [abonent]="selectedAbonent"></app-abonent-detail>
+  </div>
+</div>

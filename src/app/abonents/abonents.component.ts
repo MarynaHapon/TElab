@@ -21,6 +21,7 @@ export class AbonentsComponent implements OnInit {
     this.selectedAbonent = abonent;
   }
   getAbonents(): void {
-    this.abonents = this.abonentService.getAbonents();
+    this.abonentService.getAbonents()
+      .subscribe(abonents => this.abonents = abonents);
   }
 }
