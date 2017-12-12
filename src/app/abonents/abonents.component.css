@@ -1,18 +1,19 @@
-.wrap {
-  display: flex;
-  justify-content: space-between;
-  align-content: space-between;
-}
-.inner-left {
-  width: 65%;
-}
-.inner-right {
-  width: 30%;
+table {
+  margin: 20px auto;
 }
 th, td {
   padding: 10px 15px;
+  width: 140px;
+}
+.cell-mini {
+  width: 20px;
 }
 th {
   text-align: left;
+}
+th,
+.cell-mini {
+  color: #3f51b5;
+  font-weight: 700;
 }
 

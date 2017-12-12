@@ -1,11 +1,28 @@
-<h3>Some abonents</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let abonent of abonents" class="col-1-4"
-     routerLink="/detail/{{abonent.id}}">
+<div class="dashboard">
+  <h2 class="mat-h2 dashboard-title">Абоненты, имеющие задолженность</h2>
 
-    <div class="module hero">
-      <h4>{{ abonent.firstName }} {{ abonent.lastName }}</h4>
-    </div>
+  <div class="grid grid-pad">
+    <a *ngFor="let abonent of abonents" class="col-1-4" routerLink="/admin/detail/{{abonent.id}}">
+      <mat-card>
+        <h4 class="dashboard-abonent-title">{{ abonent.firstName }} {{ abonent.lastName }}</h4>
 
-  </a>
+        <mat-chip-list>
+          <mat-chip-list *ngIf="abonent.active === true">
+            <mat-chip color="primary" selected="true">активный</mat-chip>
+          </mat-chip-list>
+
+          <mat-chip-list *ngIf="abonent.active === false">
+            <mat-chip color="warn" selected="true">заблокированный</mat-chip>
+          </mat-chip-list>
+
+          <span class="spacer"></span>
+
+          <mat-chip color="accent" selected="true">
+            $ {{ abonent.cashBalance }}
+          </mat-chip>
+        </mat-chip-list>
+
+      </mat-card>
+    </a>
+  </div>
 </div>

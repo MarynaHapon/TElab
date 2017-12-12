@@ -13,11 +13,14 @@ export class DashboardComponent implements OnInit {
   constructor(private abonentService: AbonentService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getDebtors();
   }
 
-  getHeroes(): void {
+  getDebtors(): void {
     this.abonentService.getAbonents()
-      .subscribe(abonents => this.abonents = abonents.slice(1, 5));
+      .subscribe(abonents => this.abonents = abonents.filter(function (item) {
+          return item.cashBalance < 0;
+        }
+      ));
   }
 }

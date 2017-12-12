@@ -1,4 +1,18 @@
 /* DashboardComponent's private CSS styles */
+.dashboard {
+  margin: 20px 40px;
+}
+.dashboard-title {
+  color: #3f51b5;
+  font-weight: 700;
+  text-align: center;
+}
+.dashboard-abonent-title {
+  margin: 0 0 24px 0;
+}
+.spacer {
+  flex: 1 1 auto;
+}
 [class*='col-'] {
   float: left;
   padding-right: 20px;

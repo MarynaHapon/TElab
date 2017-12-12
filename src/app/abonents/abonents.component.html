@@ -1,42 +1,40 @@
-<div class="wrap">
-  <mat-card class="inner-left">
-    <h2 class="mat-h2">Абоненты</h2>
-    <table class="mat-cell">
-      <tr>
-        <th>id</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-        <th>Мобильный номер</th>
-        <th>Баланс</th>
-        <th>Статус</th>
-      </tr>
+<table class="mat-cell">
+  <mat-card>
+    <tr>
+      <th class="cell-mini">id</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Мобильный номер</th>
+      <th>Баланс</th>
+      <th>Статус</th>
+      <th></th>
+    </tr>
 
-      <tr *ngFor="let abonent of abonents">
-        <td> {{ abonent.id }} </td>
-        <td> {{ abonent.firstName }} </td>
-        <td> {{ abonent.lastName }} </td>
-        <td> {{ abonent.telNumber }} </td>
-        <td> {{ abonent.cashBalance }} </td>
-        <td> {{ abonent.active }} </td>
-        <!--
-        <td *ngIf="abonent.active"> Активный </td>
-        <td *ngIf="!abonent.active"> Заблокированный </td>
-        -->
-        <a routerLink="/detail/{{ abonent.id }}"
-           (click)="onSelect(abonent)"
-           mat-button
-           color="primary"
-        >Редактировать
-        </a>
-      </tr>
+    <tr *ngFor="let abonent of abonents">
+      <td class="cell-mini"> {{ abonent.id }} </td>
+      <td> {{ abonent.firstName }} </td>
+      <td> {{ abonent.lastName }} </td>
+      <td> {{ abonent.telNumber }} </td>
+      <td> {{ abonent.cashBalance }} </td>
 
-    </table>
+      <td *ngIf="abonent.active === true">
+        <mat-chip-list>
+          <mat-chip color="primary" selected="true">активный</mat-chip>
+        </mat-chip-list>
+      </td>
+
+      <td *ngIf="abonent.active === false">
+        <mat-chip-list>
+          <mat-chip color="warn" selected="true">заблокированный</mat-chip>
+        </mat-chip-list>
+      </td>
+
+      <td>
+        <a routerLink="/admin/detail/{{ abonent.id }}" (click)="onSelect(abonent)" mat-raised-button color="primary">Редактировать</a>
+      </td>
+    </tr>
   </mat-card>
+</table>
 
-  <!--
-  <div class="inner-right">
-    <app-abonent-detail [abonent]="selectedAbonent"></app-abonent-detail>
-  </div>
-  -->
 
-</div>
+

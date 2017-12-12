@@ -33,4 +33,8 @@ export class AbonentDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+  save(): void {
+    this.abonentService.updateAbonent(this.abonent)
+      .subscribe(() => this.goBack());
+  }
 }

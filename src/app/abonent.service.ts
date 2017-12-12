@@ -1,19 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Abonent } from './abonent';
-import { ABONENTS } from './mock-abonents';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class AbonentService {
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  constructor() { }
+  private abonentsUrl = 'api/abonents';  // URL to web api
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
 
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+  updateAbonent (abonent: Abonent): Observable<any> {
+    return this.http.put(this.abonentsUrl, abonent, httpOptions).
+      pipe(
+        catchError(this.handleError<any>('updateAbonent'))
+      );
+  }
+  /** GET abonents from the server */
   getAbonents(): Observable<Abonent[]> {
-    return of(ABONENTS);
+    return this.http.get<Abonent[]>(this.abonentsUrl)
+      .pipe(
+        catchError(this.handleError('getAbonents', []))
+      );
   }
   getAbonent(id: number): Observable<Abonent> {
-    return of (ABONENTS.find(abonent => abonent.id === id ));
+    const url = `${this.abonentsUrl}/${id}`;
+    return this.http.get<Abonent>(url).pipe(
+      catchError(this.handleError<Abonent>(`getAbonent id=${id}`))
+    );
+  }
+  /** POST: add a new hero to the server */
+  addAbonent(abonent: Abonent): Observable<Abonent> {
+    return this.http.post<Abonent>(this.abonentsUrl, abonent, httpOptions).pipe(
+      catchError(this.handleError<Abonent>('addHero'))
+    );
   }
 }

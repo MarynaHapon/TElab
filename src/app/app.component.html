@@ -1,12 +1,34 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1> {{ title }}! </h1>
-</div>
-<p>Задание: {{ task }}</p>
+<mat-toolbar color="primary">
+  <h1>{{ title }}</h1>
 
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/abonents">Abonents</a>
+  <span class="spacer"></span>
+
+  <button mat-icon-button (click)="setAdminRole()" routerLink="/admin/dashboard">
+    <mat-icon aria-label="Example icon-button with a heart icon">settings</mat-icon>
+  </button>
+  <button mat-icon-button (click)="setUserRole()" routerLink="/user/registration">
+    <mat-icon aria-label="Example icon-button with a heart icon">account_box</mat-icon>
+  </button>
+</mat-toolbar>
+
+<nav mat-tab-nav-bar *ngIf="role === 'admin'">
+  <a mat-tab-link
+     *ngFor="let link of navAdminLinks"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+
+<nav mat-tab-nav-bar *ngIf="role === 'user'">
+  <a mat-tab-link
+     *ngFor="let link of navUserLinks"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
 </nav>
 
 <router-outlet></router-outlet>

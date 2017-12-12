@@ -1,39 +1,39 @@
-<mat-card  *ngIf="abonent">
-  <h2 class="mat-h2">{{ abonent.name }} Редактировать №{{abonent.id}}</h2>
+<mat-card *ngIf="abonent" class="dashboard-detail">
+  <h2 class="mat-h2 dashboard-title">{{ abonent.name }} Редактировать абонента №{{abonent.id}}</h2>
 
-  <button mat-button (click)="goBack()">Назад</button>
-  <button mat-button color="primary" (click)="goSave()">Сохранить</button>
+  <div class="dashboard-space-between">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Имя" [(ngModel)]="abonent.firstName" value={{abonent.firstName}}>
+    </mat-form-field>
 
-  <br>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Имя" [(ngModel)]="abonent.firstName" value={{abonent.firstName}}>
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Фамилия" [(ngModel)]="abonent.lastName" value={{abonent.lastName}}>
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Мобильный номер" [(ngModel)]="abonent.telNumber" value={{abonent.telNumber}}>
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field *ngIf="[(abonent.cashBalance)] < 0" class="example-full-width">
-    <input matInput placeholder="Баланс" [(ngModel)]="abonent.cashBalance" value={{abonent.cashBalance}} disabled>
-  </mat-form-field>
-
-  <div *ngIf="abonent.active">
-    <button mat-button (click)="setAbonentStatus(false)" color="warn">Заблокировать</button>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Фамилия" [(ngModel)]="abonent.lastName" value={{abonent.lastName}}>
+    </mat-form-field>
   </div>
 
-  <div *ngIf="!abonent.active">
-    <button mat-button (click)="setAbonentStatus(true)" color="primary">Разблокировать</button>
+  <div class="dashboard-space-between">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Мобильный номер" [(ngModel)]="abonent.telNumber" value={{abonent.telNumber}}>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Баланс" [(ngModel)]="abonent.cashBalance" value={{abonent.cashBalance}} disabled>
+    </mat-form-field>
+  </div>
+
+  <div class="dashboard-space-around">
+    <div *ngIf="abonent.active">
+      <button mat-button (click)="setAbonentStatus(false)" color="warn" class="dashboard-btn">Заблокировать абонента</button>
+    </div>
+
+    <div *ngIf="!abonent.active">
+      <button mat-button (click)="setAbonentStatus(true)" color="primary" class="dashboard-btn">Разблокировать абонента</button>
+    </div>
+  </div>
+
+  <div class="dashboard-space-between">
+    <button mat-raised-button color="accent" (click)="goBack()">Назад</button>
+    <button mat-raised-button color="primary" (click)="save()">Сохранить</button>
   </div>
 </mat-card>
 
