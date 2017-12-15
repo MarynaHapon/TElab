@@ -17,6 +17,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BalanceComponent } from './balance/balance.component';
+import { AbonentSearchComponent } from './abonent-search/abonent-search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BalanceComponent } from './balance/balance.component';
     DashboardComponent,
     UserComponent,
     RegistrationComponent,
-    BalanceComponent
+    BalanceComponent,
+    AbonentSearchComponent
   ],
   imports: [
     BrowserModule,

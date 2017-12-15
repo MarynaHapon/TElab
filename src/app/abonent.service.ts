@@ -65,7 +65,7 @@ export class AbonentService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Abonent[]>(`api/abonents/?name=${term}`).pipe(
+    return this.http.get<Abonent[]>(`api/abonents/?lastName=${term}`).pipe(
       catchError(this.handleError<Abonent[]>('searchHeroes', []))
     );
   }

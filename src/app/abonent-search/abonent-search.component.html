@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>Поиск</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let abonent of abonents$ | async" >
+      <a routerLink="/admin/detail/{{abonent.id}}">
+        {{abonent.lastName}}
+      </a>
+    </li>
+    <li *ngFor="let abonent of abonents$ | async" >
+  </ul>
+</div>
