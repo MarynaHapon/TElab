@@ -1,0 +1,21 @@
+<mat-card class="balance">
+  <h2 class="mat-h2 balance-title">Введите Ваши данные</h2>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Имя" #firstName>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Фамилия" #lastName>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Номер телефона" #telNumber>
+  </mat-form-field>
+
+  <button (click)="addUser(firstName.value, lastName.value, telNumber.value);"
+          mat-raised-button
+          color="accent">
+    Подтвердить
+  </button>
+</mat-card>

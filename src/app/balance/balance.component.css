@@ -1,0 +1,12 @@
+.balance {
+  display: flex;
+  margin: 20px auto;
+  width: 250px;
+  flex-direction: column;
+  align-items: center;
+}
+.balance-title {
+  color: #3f51b5;
+  font-weight: 700;
+  text-align: center;
+}

@@ -52,10 +52,21 @@ export class AbonentService {
       catchError(this.handleError<Abonent>(`getAbonent id=${id}`))
     );
   }
-  /** POST: add a new hero to the server */
+  /** POST: add a new abonent to the server */
   addAbonent(abonent: Abonent): Observable<Abonent> {
-    return this.http.post<Abonent>(this.abonentsUrl, abonent, httpOptions).pipe(
+    return this.http.post<Abonent>(this.abonentsUrl, abonent, httpOptions)
+      .pipe(
       catchError(this.handleError<Abonent>('addHero'))
+    );
+  }
+  /* GET abonent whose name contains search term */
+  searchAbonent(term: string): Observable<Abonent[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Abonent[]>(`api/abonents/?name=${term}`).pipe(
+      catchError(this.handleError<Abonent[]>('searchHeroes', []))
     );
   }
 }

@@ -26,6 +26,10 @@ export class AppComponent {
     {
       label: 'Регистрация',
       path: '/user/registration'
+    },
+    {
+      label: 'Баланс',
+      path: '/user/balance'
     }
   ];
   setAdminRole(): string {

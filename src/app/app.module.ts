@@ -16,6 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { BalanceComponent } from './balance/balance.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegistrationComponent } from './registration/registration.component';
     AbonentDetailComponent,
     DashboardComponent,
     UserComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,
