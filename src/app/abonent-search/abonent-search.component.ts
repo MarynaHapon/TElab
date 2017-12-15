@@ -17,7 +17,7 @@ import { AbonentService } from '../abonent.service';
   styleUrls: ['./abonent-search.component.css']
 })
 export class AbonentSearchComponent implements OnInit {
-  abonents$: Observable<Abonent[]>;
+  abonentsName$: Observable<Abonent[]>;
   abonentsNumber$: Observable<Abonent[]>;
   private searchTerms = new Subject<string>();
   constructor(private abonentService: AbonentService) { }
@@ -35,11 +35,8 @@ export class AbonentSearchComponent implements OnInit {
       switchMap((term: string) => this.abonentService.searchAbonentName(term)),
     );
     this.abonentsNumber$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
       debounceTime(300),
-      // ignore new term if same as previous term
       distinctUntilChanged(),
-      // switch to new search observable each time the term changes
       switchMap((term: string) => this.abonentService.searchAbonentNumber(term)),
     );
   }
