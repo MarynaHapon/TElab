@@ -39,24 +39,24 @@ export class InMemoryDataService implements InMemoryDbService {
         active: true
       },
       { id: 6,
-        firstName: 'Лернид',
+        firstName: 'Леонид',
         lastName: 'Соколов',
         telNumber: 380681159977,
-        cashBalance: 550,
+        cashBalance: -550,
         active: true
       },
       { id: 7,
         firstName: 'Борис',
         lastName: 'Волков',
         telNumber: 380683354677,
-        cashBalance: 250,
+        cashBalance: -250,
         active: true
       },
       { id: 8,
         firstName: 'Александр',
         lastName: 'Соловей',
         telNumber: 380681154677,
-        cashBalance: 950,
+        cashBalance: -950,
         active: true
       },
       { id: 9,

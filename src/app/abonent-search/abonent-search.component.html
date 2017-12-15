@@ -1,14 +1,17 @@
 <div id="search-component">
-  <h4>Поиск</h4>
+  <h2 class="mat-h2 search-title">Поиск</h2>
 
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <mat-form-field class="search-input">
+    <input matInput #searchBox id="search-box" (keyup)="search(searchBox.value)"  type="text" placeholder="Введите фамилию" [matAutocomplete]="auto"/>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="searchBox.value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-  <ul class="search-result">
-    <li *ngFor="let abonent of abonents$ | async" >
-      <a routerLink="/admin/detail/{{abonent.id}}">
-        {{abonent.lastName}}
-      </a>
-    </li>
-    <li *ngFor="let abonent of abonents$ | async" >
-  </ul>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let abonent of abonents$ | async" [value]="option">
+      <a routerLink="/admin/detail/{{abonent.id}}">{{abonent.lastName}}</a>
+    </mat-option>
+  </mat-autocomplete>
+
 </div>
