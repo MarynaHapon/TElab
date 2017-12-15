@@ -52,6 +52,12 @@ export class AbonentService {
       catchError(this.handleError<Abonent>(`getAbonent id=${id}`))
     );
   }
+  getAbonentByName(lastName: string): Observable<Abonent> {
+    const url = `${this.abonentsUrl}/${lastName}`;
+    return this.http.get<Abonent>(url).pipe(
+      catchError(this.handleError<Abonent>(`getAbonent lastName=${lastName}`))
+    );
+  }
   /** POST: add a new abonent to the server */
   addAbonent(abonent: Abonent): Observable<Abonent> {
     return this.http.post<Abonent>(this.abonentsUrl, abonent, httpOptions)
