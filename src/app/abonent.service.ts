@@ -60,13 +60,23 @@ export class AbonentService {
     );
   }
   /* GET abonent whose name contains search term */
-  searchAbonent(term: string): Observable<Abonent[]> {
+  searchAbonentName(term: string): Observable<Abonent[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
     return this.http.get<Abonent[]>(`api/abonents/?lastName=${term}`).pipe(
-      catchError(this.handleError<Abonent[]>('searchHeroes', []))
+      catchError(this.handleError<Abonent[]>('searchAbonent', []))
+    );
+  }
+  /* GET abonent whose number contains search term */
+  searchAbonentNumber(term: string): Observable<Abonent[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Abonent[]>(`api/abonents/?telNumber=${term}`).pipe(
+      catchError(this.handleError<Abonent[]>('searchAbonent', []))
     );
   }
 }

@@ -1,16 +1,29 @@
 <div id="search-component">
+
   <h2 class="mat-h2 search-title">Поиск</h2>
 
   <mat-form-field class="search-input">
-    <input matInput #searchBox id="search-box" (keyup)="search(searchBox.value)"  type="text" placeholder="Введите фамилию" [matAutocomplete]="auto"/>
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="searchBox.value=''">
-      <mat-icon>close</mat-icon>
+    <input matInput #searchLastname id="search-lastname" (keyup)="search(searchLastname.value)"  type="text" placeholder="Введите фамилию" [matAutocomplete]="lastName"/>
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="searchLastname.value=''">
+  </button>
+  </mat-form-field>
+
+  <mat-autocomplete #lastName="matAutocomplete">
+    <mat-option *ngFor="let abonent of abonentsName$ | async" [value]="option">
+      <a routerLink="/admin/detail/{{abonent.id}}">{{abonent.lastName}}</a>
+    </mat-option>
+  </mat-autocomplete>
+
+
+  <mat-form-field class="search-input">
+    <input matInput #searchNumber id="search-number" (keyup)="search(searchNumber.value)"  type="text" placeholder="Введите номер" [matAutocomplete]="telNumber"/>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="searchNumber.value=''">
     </button>
   </mat-form-field>
 
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let abonent of abonents$ | async" [value]="option">
-      <a routerLink="/admin/detail/{{abonent.id}}">{{abonent.lastName}}</a>
+  <mat-autocomplete #telNumber="matAutocomplete">
+    <mat-option *ngFor="let abonent of abonentsNumber$ | async" [value]="option">
+      <a routerLink="/admin/detail/{{abonent.id}}">{{abonent.telNumber}}</a>
     </mat-option>
   </mat-autocomplete>
 

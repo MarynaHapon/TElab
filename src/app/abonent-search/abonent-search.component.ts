@@ -18,6 +18,7 @@ import { AbonentService } from '../abonent.service';
 })
 export class AbonentSearchComponent implements OnInit {
   abonents$: Observable<Abonent[]>;
+  abonentsNumber$: Observable<Abonent[]>;
   private searchTerms = new Subject<string>();
   constructor(private abonentService: AbonentService) { }
   // push a search term into the observable stream
@@ -25,13 +26,21 @@ export class AbonentSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
   ngOnInit(): void {
-    this.abonents$ = this.searchTerms.pipe(
+    this.abonentsName$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
       // ignore new term if same as previous term
       distinctUntilChanged(),
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.abonentService.searchAbonent(term)),
+      switchMap((term: string) => this.abonentService.searchAbonentName(term)),
+    );
+    this.abonentsNumber$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.abonentService.searchAbonentNumber(term)),
     );
   }
 
