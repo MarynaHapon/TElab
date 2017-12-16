@@ -1,24 +1,24 @@
-<mat-card class="balance">
+<div class="user-log">
   <h2 class="mat-h2 balance-title">Введите Ваши данные</h2>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <input matInput placeholder="Имя" #logFirstName >
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <input matInput placeholder="Фамилия" #logLastName >
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <input matInput placeholder="Номер телефона" #logTelNumber >
   </mat-form-field>
 
   <button (click)="searchUser(logFirstName.value, logLastName.value, logTelNumber.value )"
           mat-raised-button
-          color="accent">
+          color="accent" class="full-width">
     Подтвердить
   </button>
-</mat-card>
+</div>
 
 <div *ngFor="let abonent of abonents">
   <div *ngIf="abonent.id === getCurrentId()">
@@ -26,25 +26,26 @@
 
       <h2 class="mat-h2 balance-title">Ваш аккаунт</h2>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="full-width">
         <input matInput placeholder="Имя" [(ngModel)]="abonent.firstName" value={{abonent.firstName}} disabled>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="full-width">
         <input matInput placeholder="Фамилия" [(ngModel)]="abonent.lastName" value={{abonent.lastName}} disabled>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="full-width">
         <input matInput placeholder="Баланс" [(ngModel)]="abonent.cashBalance" value={{abonent.cashBalance}} disabled>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Пополнить баланс" #inputCashBalance >
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Введите сумму" #inputCashBalance >
       </mat-form-field>
 
-      <button (click)="updateBalance( inputCashBalance.value )"
+      <button (click)="updateBalance(inputCashBalance.value)"
               mat-raised-button
-              color="accent">
+              color="accent"
+              class="full-width">
         Пополнить
       </button>
 
