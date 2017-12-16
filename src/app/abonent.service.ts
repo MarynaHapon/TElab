@@ -33,7 +33,7 @@ export class AbonentService {
       return of(result as T);
     };
   }
-  updateAbonent (abonent: Abonent): Observable<any> {
+  updateAbonent(abonent: Abonent): Observable<any> {
     return this.http.put(this.abonentsUrl, abonent, httpOptions).
       pipe(
         catchError(this.handleError<any>('updateAbonent'))

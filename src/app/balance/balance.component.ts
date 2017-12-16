@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Abonent } from '../abonent';
 import { AbonentService } from '../abonent.service';
 
-
+let currentItem: Abonent;
 let currentId: number;
 
 @Component({
@@ -11,8 +11,8 @@ let currentId: number;
   styleUrls: ['./balance.component.css']
 })
 export class BalanceComponent implements OnInit {
+  @Input() abonent: Abonent;
   abonents: Abonent[];
-  abonent: Abonent;
   constructor(private abonentService: AbonentService) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class BalanceComponent implements OnInit {
     this.abonentService.getAbonents()
       .subscribe(abonents => this.abonents = abonents);
   }
-  getId(): number {
+  getCurrentId(): number {
     return currentId;
   }
   searchUser(firstName: string, lastName: string, telNumber: number) {
@@ -32,9 +32,21 @@ export class BalanceComponent implements OnInit {
     if (!firstName || !lastName || !telNumber) { }
     this.abonents.forEach(function (item) {
       if (firstName === item.firstName && lastName === item.lastName && Number( telNumber ) === item.telNumber ) {
-        return currentId = item.id;
+        currentId = item.id;
+        return currentItem = item;
       }
     });
+  }
+  updateBalance(inputCashBalance: string) {
+    this.abonentService.updateAbonent({
+      id: currentItem.id,
+      firstName: currentItem.firstName,
+      lastName: currentItem.lastName,
+      telNumber: currentItem.telNumber,
+      cashBalance: Number(inputCashBalance) + currentItem.cashBalance,
+      active: currentItem.active
+    }).subscribe(abonents => this.abonents = abonents );
+    this.getAbonents();
   }
 }
 

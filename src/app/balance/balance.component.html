@@ -2,18 +2,18 @@
   <h2 class="mat-h2 balance-title">Введите Ваши данные</h2>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Имя" #firstName2>
+    <input matInput placeholder="Имя" #logFirstName >
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Фамилия" #lastName2>
+    <input matInput placeholder="Фамилия" #logLastName >
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Номер телефона" #telNumber2>
+    <input matInput placeholder="Номер телефона" #logTelNumber >
   </mat-form-field>
 
-  <button (click)="searchUser(firstName2.value, lastName2.value, telNumber2 .value);"
+  <button (click)="searchUser(logFirstName.value, logLastName.value, logTelNumber.value )"
           mat-raised-button
           color="accent">
     Подтвердить
@@ -21,21 +21,32 @@
 </mat-card>
 
 <div *ngFor="let abonent of abonents">
-  <div *ngIf="abonent.id === getId()">
+  <div *ngIf="abonent.id === getCurrentId()">
     <mat-card class="balance">
+
       <h2 class="mat-h2 balance-title">Ваш аккаунт</h2>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Имя" [(ngModel)]="abonent.firstName" value={{ abonent.firstName }} disabled>
+        <input matInput placeholder="Имя" [(ngModel)]="abonent.firstName" value={{abonent.firstName}} disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Фамилия" [(ngModel)]="abonent.lastName" value={{ abonent.lastName }} disabled>
+        <input matInput placeholder="Фамилия" [(ngModel)]="abonent.lastName" value={{abonent.lastName}} disabled>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Баланс" [(ngModel)]="abonent.cashBalance" value={{ abonent.cashBalance }} disabled>
+        <input matInput placeholder="Баланс" [(ngModel)]="abonent.cashBalance" value={{abonent.cashBalance}} disabled>
       </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Пополнить баланс" #inputCashBalance >
+      </mat-form-field>
+
+      <button (click)="updateBalance( inputCashBalance.value )"
+              mat-raised-button
+              color="accent">
+        Пополнить
+      </button>
 
     </mat-card>
   </div>
